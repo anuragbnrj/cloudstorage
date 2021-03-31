@@ -19,6 +19,6 @@ public interface FileMapper {
     int createFile(File file);
 
     @Delete("DELETE from FILES where fileid = #{fileId}")
-    void deleteFileById(Long fileId);
+    int deleteFileById(Long fileId);
 
 }
