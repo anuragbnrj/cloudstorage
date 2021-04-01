@@ -39,7 +39,7 @@ public class NoteController {
             // check whether note exists
             if (existingNote == null) {
                 model.addAttribute("result", "error");
-                model.addAttribute("errorMessage", "ERROR: CANNOT UPDATE Note with id " + noteId + ". Note does NOT exist!");
+                model.addAttribute("errorMessage", "CANNOT UPDATE Note with id " + noteId + ". Note does NOT exist!");
                 return "result";
             }
             // check whether note sent in request belongs to logged in user
@@ -57,6 +57,12 @@ public class NoteController {
 
         if (rowsUpdated < 1) {
             model.addAttribute("result", "error");
+            if (rowsUpdated == -1) { // -1 is returned when note description exceeds 1000 characters
+                model.addAttribute("errorMessage", "CANNOT ADD/UPDATE Note where description exceeds 1000 characters");
+            }
+            if (rowsUpdated == -2) {
+                model.addAttribute("errorMessage", "CANNOT ADD/UPDATE Note. Note already available!!");
+            }
             return "result";
         }
 
