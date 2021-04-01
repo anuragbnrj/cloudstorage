@@ -30,6 +30,10 @@ public class CredentialService {
     }
 
     public int createCredential(Credential credential) {
+        int validateCredentialResult = validateCredential(credential);
+        if (validateCredentialResult < 1) {
+            return validateCredentialResult;
+        }
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);
@@ -40,6 +44,10 @@ public class CredentialService {
     }
 
     public int updateCredential(Credential credential) {
+        int validateCredentialResult = validateCredential(credential);
+        if (validateCredentialResult < 1) {
+            return validateCredentialResult;
+        }
         encryptPasswordInCredential(credential);
         return credentialMapper.updateCredential(credential);
     }
@@ -50,6 +58,18 @@ public class CredentialService {
 
     private void encryptPasswordInCredential(Credential credential) {
         credential.setPassword(encryptionService.encryptValue(credential.getPassword(), credential.getKey()));
+    }
+
+    private int validateCredential(Credential credential) {
+        List<Credential> existingCredentialList = credentialMapper.findCredentialsByUserId(credential.getUserId());
+        for (Credential existingCredential : existingCredentialList) {
+            if (credential.getUrl().equals(existingCredential.getUrl())
+                    && credential.getUsername().equals(existingCredential.getUsername())
+            ) {
+                return -1; // -1 is the code when url and username combo already exist for user
+            }
+        }
+        return 1;
     }
 
 }

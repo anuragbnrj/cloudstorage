@@ -60,6 +60,9 @@ public class CredentialController {
 
         if (rowsUpdated < 1) {
             model.addAttribute("result", "error");
+            if (rowsUpdated == -1) {
+                model.addAttribute("errorMessage", "CANNOT Add/Update Credential with url: " + credential.getUrl() + " and username: " + credential.getUsername() + ". Combination ALREADY AVAILABLE!");
+            }
             return "result";
         }
 
