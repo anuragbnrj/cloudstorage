@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequestMapping("/files")
+@ControllerAdvice
 public class FileController {
 
     private final FileService fileService;
@@ -46,7 +48,6 @@ public class FileController {
 
     @PostMapping
     public String createFile(@RequestParam("fileUpload") MultipartFile multipartFile, Authentication authentication, Model model) {
-        log.info("Multipartfile details: {}", multipartFile);
         User user = userService.getUserByUsername((String) authentication.getPrincipal());
         Long userId = user.getUserId();
         String newFileName = multipartFile.getOriginalFilename();
@@ -105,6 +106,13 @@ public class FileController {
         }
 
         model.addAttribute("result", "success");
+        return "result";
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public String handleMaxUploadSizeExceededException(Model model) {
+        model.addAttribute("result", "error");
+        model.addAttribute("errorMessage", "CANNOT UPLOAD File with size GREATER than 5MB!!");
         return "result";
     }
 
