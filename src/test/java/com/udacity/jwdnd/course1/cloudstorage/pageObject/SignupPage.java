@@ -48,12 +48,12 @@ public class SignupPage {
         assertThat(driver.getCurrentUrl()).contains("/signup");
     }
 
-    public void signupTestUserAndVerifySuccessMessage(String fname, String lname, String username, String password) {
+    public void signupTestUser(String fname, String lname, String username, String password) {
         // given
         // when
         signup(fname, lname, username, password);
         // then
-        assertThat(successMessage.getText()).isEqualTo("You successfully signed up! Please continue to the login page.");
+        //assertThat(successMessage.getText()).isEqualTo("You successfully signed up! Please continue to the login page.");
     }
 
     private void signup(String firstName, String lastName, String username, String password) {

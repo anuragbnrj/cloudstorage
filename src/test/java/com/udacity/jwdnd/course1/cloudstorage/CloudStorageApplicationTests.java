@@ -91,7 +91,7 @@ class CloudStorageApplicationTests {
     @Test
     void testSignupAndLogoutFlow() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // when
@@ -117,7 +117,7 @@ class CloudStorageApplicationTests {
     @Test
     void testCreateNoteFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
@@ -157,7 +157,7 @@ class CloudStorageApplicationTests {
     @Test
     void testEditNoteFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
@@ -223,7 +223,7 @@ class CloudStorageApplicationTests {
     @Test
     void testDeleteNoteFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
@@ -283,7 +283,7 @@ class CloudStorageApplicationTests {
     @Test
     void testCreateCredentialFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
@@ -323,7 +323,7 @@ class CloudStorageApplicationTests {
     @Test
     void testEditCredentialFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
@@ -392,7 +392,7 @@ class CloudStorageApplicationTests {
     @Test
     void testDeleteCredentialFunctionality() {
         signupPage.visitAndVerifySignupPage(baseURL, driver);
-        signupPage.signupTestUserAndVerifySuccessMessage(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
+        signupPage.signupTestUser(TEST_USER_FIRST_NAME, TEST_USER_LAST_NAME, TEST_USER_USERNAME, TEST_USER_PASSWORD);
         loginPage.visitAndVerifyLoginPage(baseURL, driver);
 
         // login with test user
